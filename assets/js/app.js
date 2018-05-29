@@ -1,3 +1,4 @@
-$(document).ready(function() {
-    console.log("dev test");
+
+$(document).ready(function () {
+    console.log(test);
 });
