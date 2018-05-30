@@ -1,3 +1,20 @@
 body {
     background-color: aliceblue;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+.current-weather {
+    background: url("../images/Cloudy-weather.jpg") no-repeat;
+    position: relative;
+}
+
+.current-weather img {
+    width: 100%;
+}
+
+.overlay-data {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    color: white;
 }
