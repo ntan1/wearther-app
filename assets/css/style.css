@@ -18,3 +18,11 @@ body {
     left: 10%;
     color: white;
 }
+
+.search {
+    margin-top: 30px;
+}
+
+.submit-button {
+    top: 5px;
+}
