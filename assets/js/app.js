@@ -1,12 +1,14 @@
 $(document).ready(function () {
-    // get user city
+    // get current city weather
     $.ajax({
         url: "https://api.ipdata.co",
         method: "GET"
     }).then(function (response) {
         city = response.city;
+        console.log(city);
         // code to query weather api goes here for testing purposes
-        // proper way to query is in functions.js, waiting for artur
+
+
     });
 
     $('#submitWeather').click(function (event) {
@@ -14,8 +16,10 @@ $(document).ready(function () {
         console.log(rangeValue);
         city = $('#city').val();
 
-        let queryURL1 = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&APPID=d8f37535a253b2bac1b2c2093df8cbf8";
-        let queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&APPID=d8f37535a253b2bac1b2c2093df8cbf8";
+        params["q"] = city;
+
+        let queryURL1 = currentUrl + $.param(params);
+        let queryURL = forecastUrl + $.param(params);
 
         console.log(city);
         console.log(queryURL);
