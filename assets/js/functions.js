@@ -77,8 +77,18 @@ function getWeatherData(city) {
                 daily[index].temp.push(Math.ceil(data.main.temp));
             }
 
-            // create 24hr data
-            if (i <= 8) {
+            // // create 24hr data
+            // if (i <= 8) {
+            //     let hourlyWeather = {
+            //         date: moment(data.dt_txt).format("M/D h a"),
+            //         temp: Math.ceil(data.main.temp)
+            //     }
+            //     hourly.push(hourlyWeather);
+            // }
+
+            // create hourly data
+            rangeValue = rangeValue < 2 ? 2: rangeValue;
+            if (i <= frequency * rangeValue) {
                 let hourlyWeather = {
                     date: moment(data.dt_txt).format("M/D h a"),
                     temp: Math.ceil(data.main.temp)
@@ -104,4 +114,70 @@ function getAverageTemp() {
         }
         daily[i].temp = Math.ceil(sum / daily[i].temp.length);
     }
+}
+
+// Creates a chart using D3
+function drawChart(data, heading="") {
+    d3.select("#chart").html("");
+    $("#chart").append(`<h2>Weather ${city} - ${heading}</h2>`);
+
+    let margin = { top: 20, right: 80, bottom: 30, left: 50 },
+        frame = { width: 750, height: 500 },
+        width = frame.width - margin.left - margin.right,
+        height = frame.height - margin.top - margin.bottom;
+
+    // handle different date formats with hourly and daily data
+    let parseTime = d3.timeParse('%m/%d');
+    if (data[0].date.length > 5) {
+        parseTime = d3.timeParse('%m/%d %I %p');
+    }
+
+    let x = d3.scaleTime()
+        .range([0, width]);
+
+    let y = d3.scaleLinear()
+        .range([height, 0]);
+
+    let temperatureLine = d3.line()
+        .x(function (d) { return x(parseTime(d.date)); })
+        .y(function (d) { return y(d.temp); });
+
+    let svg = d3.select('#chart').append('svg')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+        .append('g')
+        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+    x.domain(d3.extent(data, function (d) { return parseTime(d.date); }));
+    y.domain(d3.extent(data, function (d) { return d.temp; }));
+
+    // draw x-axis
+    svg.append('g')
+        .style('font-size', '12px')
+        .attr('class', 'axis axis--x')
+        .attr('transform', 'translate(0,' + height + ')')
+        .call(d3.axisBottom(x));
+
+    // draw temperature y axis
+    svg.append('g')
+        .style('font-size', '12px')
+        .attr('class', 'axis axis--y')
+        .call(d3.axisLeft(y))
+        .append('text')
+        .attr("fill", "#000")
+        .attr('class', 'axis-title')
+        .attr('transform', 'rotate(-90)')
+        .attr('y', -50)
+        .attr('dy', '.71em')
+        .style('text-anchor', 'end')
+        .text('Temperature (°C)');
+
+    // plot temperature values
+    svg.append('path')
+        .datum(data)
+        .attr('class', 'line')
+        .attr('d', temperatureLine)
+        .attr("stroke", "#003eff")
+        .attr("stroke-width", 4)
+        .attr("fill", "none");
 }

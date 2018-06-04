@@ -1,5 +1,5 @@
 body {
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
     /* font-family: 'Titillium Web', sans-serif; */
 }
 
@@ -27,11 +27,6 @@ body {
     top: 5px;
 }
 
-.chart div {
-    font: 10px sans-serif;
-    background-color: steelblue;
-    text-align: right;
-    padding: 3px;
-    margin: 1px;
-    color: white;
-  }
+#chart {
+    font: 15px sans-serif;
+}

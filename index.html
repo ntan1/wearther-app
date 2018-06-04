@@ -66,20 +66,18 @@
 
     <!--This is everything below the search bar, this is where all your content will go.-->
     <main class="container">
-        <svg id="chart" width="960" height="500"></svg>
-        <!-- <div class="current-weather">
-            <figure>
-                <img src="assets/images/Cloudy-weather.jpg">
-                <figcaption class="overlay-data">
-                    <h2>Toronto</h2>
-                    <h3>5 pm</h3>
-                    <h3>Cloudy</h3>
-                    <h1>23&#176;C</h1>
-                </figcaption>
-            </figure>
-        </div> -->
-        <div class="chart">
+        <div id="chart-container">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="timeframe" id="hourly" checked>Hourly
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="timeframe" id="daily">Daily
+                </label>
+            </div>
+            <div id="chart"></div>
         </div>
+
     </main>
 
     <!-- footer -->
