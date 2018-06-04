@@ -6,6 +6,7 @@
 // Todo: different loading gif, transparent bg if possible
 // Todo: animated line drawing
 // Todo: make chart look nicer
+// Todo: loading gif replaces table as well
 
 $(document).ready(function () {
     // get current city weather
@@ -17,9 +18,12 @@ $(document).ready(function () {
         params["q"] = city;
         console.log(city);
         getWeatherData(city);
-        setTimeout(function () { drawChart(hourly, "Hourly") }, 500);
+        setTimeout(function () {
+            drawChart(hourly, "Hourly");
+            generateTable(hourly);
+        }, 500);
     });
-
+    
     // when submit button clicked
     $('#submitWeather').on("click", function (event) {
         event.preventDefault();
@@ -29,21 +33,24 @@ $(document).ready(function () {
         $("#loading").show();
         $("#chart").html("<img src='assets/images/loading.gif'>")
         getWeatherData(city);
-
+        
         setTimeout(function () {
             drawChart(hourly, "Hourly");
+            generateTable(hourly);
             $("#hourly").click();
         }, 500);
         $('#formId')[0].reset();
     });
-
+    
     // when daily/hourly toggle clicked
     $("#chart-container").on("click", ".btn", function () {
         let name = $(this).find("input").attr("id");
         if (name === "daily") {
             drawChart(daily, "Daily");
+            generateTable(daily);
         } else if (name === "hourly") {
             drawChart(hourly, "Hourly");
+            generateTable(hourly);
         }
     });
 

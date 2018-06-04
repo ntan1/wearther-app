@@ -67,7 +67,8 @@ function getWeatherData(city) {
                 let dailyWeather = {
                     date: date,
                     temp: [Math.ceil(data.main.temp)],
-                    icon: data.weather[0].icon
+                    icon: data.weather[0].icon,
+                    description: data.weather[0].description
                 }
                 daily.push(dailyWeather);
                 dateCounter.push(date);
@@ -88,12 +89,13 @@ function getWeatherData(city) {
             // }
 
             // create hourly data
-            rangeValue = rangeValue < 2 ? 2: rangeValue;
+            rangeValue = rangeValue < 2 ? 2 : rangeValue;
             if (i <= frequency * rangeValue) {
                 let hourlyWeather = {
                     date: moment(data.dt_txt).format("M/D h a"),
                     temp: Math.ceil(data.main.temp),
-                    icon: data.weather[0].icon
+                    icon: data.weather[0].icon,
+                    description: data.weather[0].description
                 }
                 hourly.push(hourlyWeather);
             }
@@ -119,7 +121,7 @@ function getAverageTemp() {
 }
 
 // Creates a chart using D3
-function drawChart(data, heading="") {
+function drawChart(data, heading = "") {
     d3.select("#chart").html("");
     $("#chart").append(`<h2>Weather ${city} - ${heading}</h2>`);
 
@@ -182,4 +184,16 @@ function drawChart(data, heading="") {
         .attr("stroke", "#003eff")
         .attr("stroke-width", 4)
         .attr("fill", "none");
+}
+
+function generateTable(arr) {
+    $("#table-weather").find("tbody").html("");
+    for (let i = 0; i < arr.length; i++) {
+        let tr = $("<tr>");
+        $(tr).append(`<td>${arr[i].date}</td>`);
+        $(tr).append(`<td><img src='${imgUrl}${arr[i].icon}.png'></td>`);
+        $(tr).append(`<td>${arr[i].temp}</td>`);
+        $(tr).append(`<td>${arr[i].description}</td>`);
+        $("#table-weather").find("tbody").append(tr);
+    }
 }
