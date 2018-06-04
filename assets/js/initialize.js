@@ -15,5 +15,7 @@ let params = {
     appid: apiKey
 }
 // weather data
-current = {};
-forecast = [];
+let current = {};
+let forecast = [];
+let daily = [];
+let hourly = [];
