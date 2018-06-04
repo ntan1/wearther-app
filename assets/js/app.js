@@ -1,5 +1,7 @@
 // Todo: disable chart toggle buttons on search
 // Todo: display icons on x-axis of chart
+// Todo: Add error messages
+// Todo: more accurate icon selection for daily weather
 // Todo: chart change on slider change
 // Todo: different loading gif, transparent bg if possible
 // Todo: animated line drawing

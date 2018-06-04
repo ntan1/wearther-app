@@ -1,6 +1,6 @@
 body {
     /* background-color: aliceblue; */
-    /* font-family: 'Titillium Web', sans-serif; */
+    font-family: 'Titillium Web', sans-serif;
 }
 
 .current-weather {
@@ -28,5 +28,5 @@ body {
 }
 
 #chart {
-    font: 15px sans-serif;
+    
 }

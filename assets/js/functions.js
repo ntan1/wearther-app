@@ -66,7 +66,8 @@ function getWeatherData(city) {
             if (!dateCounter.includes(date) && dateCounter.length < rangeValue) {
                 let dailyWeather = {
                     date: date,
-                    temp: [Math.ceil(data.main.temp)]
+                    temp: [Math.ceil(data.main.temp)],
+                    icon: data.weather[0].icon
                 }
                 daily.push(dailyWeather);
                 dateCounter.push(date);
@@ -91,7 +92,8 @@ function getWeatherData(city) {
             if (i <= frequency * rangeValue) {
                 let hourlyWeather = {
                     date: moment(data.dt_txt).format("M/D h a"),
-                    temp: Math.ceil(data.main.temp)
+                    temp: Math.ceil(data.main.temp),
+                    icon: data.weather[0].icon
                 }
                 hourly.push(hourlyWeather);
             }
