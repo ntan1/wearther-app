@@ -18,10 +18,10 @@ $(document).ready(function () {
         params["q"] = city;
         console.log(city);
         getWeatherData(city);
-        setTimeout(function () {
-            drawChart(hourly, "Hourly");
-            generateTable(hourly);
-        }, 500);
+        // setTimeout(function () {
+        //     drawChart(hourly, "Hourly");
+        //     generateTable(hourly);
+        // }, 500);
     });
     
     // when submit button clicked
@@ -30,28 +30,38 @@ $(document).ready(function () {
         if ($('#city').val() !== "") {
             city = $('#city').val();
         }
-        $("#loading").show();
-        $("#chart").html("<img src='assets/images/loading.gif'>")
+        // $("#loading").show();
+        // $("#chart").html("<img src='assets/images/loading.gif'>");
         getWeatherData(city);
         
-        setTimeout(function () {
-            drawChart(hourly, "Hourly");
-            generateTable(hourly);
-            $("#hourly").click();
-        }, 500);
+        // setTimeout(function () {
+        //     drawChart(hourly, "Hourly");
+        //     generateTable(hourly);
+        //     $("#hourly").click();
+        // }, 500);
         $('#formId')[0].reset();
     });
     
     // when daily/hourly toggle clicked
     $("#chart-container").on("click", ".btn", function () {
-        let name = $(this).find("input").attr("id");
-        if (name === "daily") {
+        toggle = $(this).find("input").attr("id");
+        if (toggle === "daily") {
             drawChart(daily, "Daily");
-            generateTable(daily);
-        } else if (name === "hourly") {
+            // generateTable(daily, 1, limit);
+            changePage(1);
+        } else if (toggle === "hourly") {
             drawChart(hourly, "Hourly");
-            generateTable(hourly);
+            // generateTable(hourly, 1, limit);
+            changePage(1);
         }
+        console.log("clicked")
+    });
+
+    // pagination click 
+    $(".pagination").on("click", ".page-item", function() {
+        $(".pagination").find(".active").removeClass("active");
+        $(this).addClass("active");
+        changePage(+$(this).find("a").text());
     });
 
     // slider

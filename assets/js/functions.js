@@ -106,7 +106,13 @@ function getWeatherData(city) {
         console.log(daily);
         console.log(hourly);
         console.log(forecast);
-
+        $("#loading").show();
+        $("#chart").html("<img src='assets/images/loading.gif'>");
+        setTimeout(function () {
+            drawChart(hourly, "Hourly");
+            $("#hourly").click();
+            generateTable(hourly, 1, limit);
+        }, 500);
     });
 }
 
@@ -186,14 +192,35 @@ function drawChart(data, heading = "") {
         .attr("fill", "none");
 }
 
-function generateTable(arr) {
+function generateTable(arr, page, limit) {
     $("#table-weather").find("tbody").html("");
-    for (let i = 0; i < arr.length; i++) {
+    console.log(page);
+    console.log(limit);
+    let maxLength = page * limit > arr.length ? arr.length : page * limit;
+    for (let i = (page - 1) * limit; i < maxLength; i++) {
         let tr = $("<tr>");
         $(tr).append(`<td>${arr[i].date}</td>`);
         $(tr).append(`<td><img src='${imgUrl}${arr[i].icon}.png'></td>`);
         $(tr).append(`<td>${arr[i].temp}</td>`);
         $(tr).append(`<td>${arr[i].description}</td>`);
         $("#table-weather").find("tbody").append(tr);
+    }
+    $(".pagination").html("");
+    console.log("Arr length is " + Math.ceil(arr.length / 7));
+    for (let i = 1; i <= Math.ceil(arr.length / 7); i++) {
+        let btn = $("<li class='page-item'>");
+        if (i === page) {
+            btn = $("<li class='page-item active'>");
+        }
+        $(btn).append(`<a class='page-link' href='#'>${i}</a>`);
+        $(".pagination").append(btn);
+    }
+}
+
+function changePage(page) {
+    if (toggle === "hourly") {
+        generateTable(hourly, page, limit);
+    } else if (toggle === "daily") {
+        generateTable(daily, page, limit);
     }
 }

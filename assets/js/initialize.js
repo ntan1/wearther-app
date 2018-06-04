@@ -24,3 +24,6 @@ let current = {};
 let forecast = [];
 let daily = [];
 let hourly = [];
+// button state
+let toggle = "hourly";
+let limit = +$(".pagination").data("limit");
