@@ -54,7 +54,6 @@ $(document).ready(function () {
             // generateTable(hourly, 1, limit);
             changePage(1);
         }
-        console.log("clicked")
     });
 
     // pagination click 

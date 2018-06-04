@@ -197,6 +197,7 @@ function generateTable(arr, page, limit) {
     console.log(page);
     console.log(limit);
     let maxLength = page * limit > arr.length ? arr.length : page * limit;
+    console.log("maxLength: " + maxLength);
     for (let i = (page - 1) * limit; i < maxLength; i++) {
         let tr = $("<tr>");
         $(tr).append(`<td>${arr[i].date}</td>`);
@@ -206,8 +207,7 @@ function generateTable(arr, page, limit) {
         $("#table-weather").find("tbody").append(tr);
     }
     $(".pagination").html("");
-    console.log("Arr length is " + Math.ceil(arr.length / 7));
-    for (let i = 1; i <= Math.ceil(arr.length / 7); i++) {
+    for (let i = 1; i <= Math.ceil(arr.length / limit); i++) {
         let btn = $("<li class='page-item'>");
         if (i === page) {
             btn = $("<li class='page-item active'>");
