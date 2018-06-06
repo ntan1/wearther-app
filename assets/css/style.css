@@ -36,6 +36,7 @@ header button {
 /* ---------------------------------------  SEARCH BAR  */
 
 #search-bar {
+    position: relative;
     height: 0px;
     background: rgb(224, 224, 224);
     border-bottom: 1px solid grey;
@@ -51,12 +52,14 @@ header button {
 #autocomplete-list {
     background: white;
     position: absolute;
+    border: 1px solid grey;
+    border-top: none;
 }
 
 .autocomplete-list-item {
     border-bottom: 1px solid lightgrey;
     height: 35px;
-    width: 330px;
+    width: 320px;
     letter-spacing: 2px;
     padding-left: 30px;
     padding-top: 6px;
@@ -127,6 +130,35 @@ main {
 .section-heading hr {
     width: 90%;
     margin-bottom: 30px;
+}
+
+.settings-btn {
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    background: #525252;
+    width: 65px;
+    height: 65px;
+    border-bottom-left-radius: 40px; 
+    border-top-right-radius: 7px;
+    z-index: 99;
+    transition: all 0.5s ease-in;
+}
+
+.settings-btn i {
+    color: white;
+    font-size: 2em;
+    transform: rotateZ(0deg);
+    transition: transform 1s;
+    
+    position: absolute;
+    bottom: 20px;
+    left: 18px;
+
+}
+
+#settings i:hover {
+    transform: rotateZ(60deg);
 }
 
 /* ---------------------------------------  INFO  */
