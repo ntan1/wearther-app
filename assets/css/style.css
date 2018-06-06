@@ -1,0 +1,285 @@
+/* ---------------------------------------  BODY  */
+
+body {
+    box-sizing: border-box;
+    font-family: Montserrat, sans-serif;
+    background: rgb(243, 243, 243);
+}
+
+
+/* ---------------------------------------  HEADER  */
+
+header {
+    color: white;
+    height: 80px;
+    background: rgb(24, 154, 205);
+}
+
+#header-title {
+    font-size: 2.5em;
+}
+
+header button {
+    color: white;
+    width: 200px;
+    height: 50px;
+    letter-spacing: 2px;
+    background: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+    border-image: initial;
+    border-radius: 5px;
+}
+
+
+/* ---------------------------------------  SEARCH BAR  */
+
+#search-bar {
+    height: 0px;
+    background: rgb(224, 224, 224);
+    border-bottom: 1px solid grey;
+    transition: height 1s;
+    
+    overflow: hidden;
+
+    z-index: 99;
+}
+
+/* AUTOCOMPLETE */
+
+#autocomplete-list {
+    background: white;
+    position: absolute;
+}
+
+.autocomplete-list-item {
+    border-bottom: 1px solid lightgrey;
+    height: 35px;
+    width: 330px;
+    letter-spacing: 2px;
+    padding-left: 30px;
+    padding-top: 6px;
+
+    cursor: pointer;
+}
+
+/*  */
+
+#navbar-left {
+    position: relative;
+    top: 50px;
+    transform: translate(0%, -50%);
+}
+
+#navbar-right {
+    float: right;
+    position: relative;
+    top: 50px;
+    transform: translate(0%, -50%);
+}
+
+#search-bar button {
+    background: rgb(24, 154, 205);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(24, 154, 205);
+    border-image: initial;
+}
+
+/* Slider */
+
+.slidecontainer {
+    width: 300px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    opacity: 0.7;
+    border-radius: 5px;
+    background: rgb(156, 156, 156);
+    outline: none;
+    transition: opacity 0.2s;
+}
+
+/* ---------------------------------------  MAIN & SECTION  */
+
+main {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.section {
+    padding-top: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 30px;
+    background: white;
+}
+.section-heading h1 {
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 0px;
+}
+
+.section-heading hr {
+    width: 90%;
+    margin-bottom: 30px;
+}
+
+/* ---------------------------------------  INFO  */
+
+
+#info-hi-low {
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+
+#realfeel-val {
+    font-size: 4em;
+    font-weight: 900;
+    text-align: center;
+    width: 100%;
+}
+
+#realfeel-description {
+    font-size: 1.4em;
+    font-weight: 400;
+    letter-spacing: 5px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    top: -15px;
+}
+
+#curley-bracket {
+    height: 120px;
+    overflow: visible;
+}
+
+#curley-bracket div {
+    height: 0px;
+    font-weight: 100;
+    font-size: 25em;
+    position: relative;
+    top: -115px;
+    left: -335px;
+    transform: rotate(-90deg);
+}
+
+.info-temperature-block {
+    text-align: center;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    float: left;
+}
+
+.info-temperature-val {
+    font-size: 3em;
+    font-weight: 900;
+}
+
+.info-temperature-description {
+    position: relative;
+    top: -10px;
+}
+
+#hr-spacer {
+    width: 60%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.center-3 {
+    /* width: min-content; */
+    width: 100px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    /* background: #e2e2e2; */
+}
+
+.center-5 {
+    /* width: min-content; */
+    width: 75px;
+    /* background: #e2e2e2; */
+}
+
+.center div {
+    display: inline;
+}
+
+/* Carosel */
+
+.carousel-item {
+    height: 100px;
+    width: 440px;
+}
+
+.col-2 {
+    width: 80px;
+    font-size: 0.8em;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.col-offset-5 {
+    margin-left:4.166666667%;
+}
+
+.info-forecast h1 {
+    text-align: center;
+    font-size: 1em;
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+
+.info-forecast h2 {
+    text-align: center;
+    font-size: 0.8em;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.info-forecast i {
+    width: 100%;
+    text-align: center;
+    font-size: 3.5em;
+    margin-bottom: 8px;
+}
+
+.info-forecast {
+    transform: rotateY(0deg);
+    transition: all 1s;
+}
+
+/* ---------------------------------------  GRAPHIC  */
+
+
+#graphic-bitmoji {
+    text-align: center;
+}
+
+#graphic-description {
+    height: 303px;
+}
+
+#graphic-description-content {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+#graphic-description-content h2 {
+    text-align: center;
+    font-size: 1em;
+    font-weight: 700;
+}
+
+#graphic-description-content hr {
+    width: 60%;
+}
