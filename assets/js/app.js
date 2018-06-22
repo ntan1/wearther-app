@@ -11,7 +11,7 @@
 $(document).ready(function () {
     // get current city weather
     $.ajax({
-        url: "https://api.ipdata.co",
+        url: "https://api.ipdata.co?api-key=" + IPapiKey,
         method: "GET"
     }).then(function (response) {
         city = response.city;

@@ -1,5 +1,6 @@
-// api key
+// api keys
 const apiKey = "d8f37535a253b2bac1b2c2093df8cbf8";
+const IPapiKey = "4ca031d476d4aee7b790991822f36b747e61846e5eba53b4aa8539ee";
 // api urls
 const currentUrl = "http://api.openweathermap.org/data/2.5/weather?";
 const forecastUrl = "http://api.openweathermap.org/data/2.5/forecast?";
